@@ -1,5 +1,8 @@
 package com.debbox.debvendas.services;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import com.debbox.debvendas.dto.SelllerDTO;
 import com.debbox.debvendas.entities.Saller;
 import com.debbox.debvendas.repositories.SellerRepositorie;
 
@@ -12,8 +15,9 @@ public class SellerServices {
     @Autowired
     private SellerRepositorie repository;
 
-    public List<Saller> findAll(){
-        return repository.findAll();
-    }
+    public List<SelllerDTO> findAll(){
+        List<Saller> result = repository.findAll();
+        return result.stream().map(x -> new SelllerDTO(x)).collect(Collectors.toList());
 
+    }
 }
