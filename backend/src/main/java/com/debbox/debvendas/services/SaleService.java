@@ -1,7 +1,10 @@
 package com.debbox.debvendas.services;
 
 
+import java.util.List;
+
 import com.debbox.debvendas.dto.SaleDTO;
+import com.debbox.debvendas.dto.SaleSumDTO;
 import com.debbox.debvendas.entities.Sale;
 import com.debbox.debvendas.repositories.SaleRepository;
 import com.debbox.debvendas.repositories.SellerRepositorie;
@@ -27,5 +30,9 @@ public class SaleService {
         Page<Sale> result = repository.findAll(pageable);
         return result.map(x -> new SaleDTO(x));
 
+    }
+
+    public  List<SaleSumDTO> amoutGroupedBySaller() {
+        return repository.amoutGroupedBySaller();
     }
 }

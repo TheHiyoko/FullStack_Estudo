@@ -1,6 +1,9 @@
 package com.debbox.debvendas.controllers;
 
+import java.util.List;
+
 import com.debbox.debvendas.dto.SaleDTO;
+import com.debbox.debvendas.dto.SaleSumDTO;
 import com.debbox.debvendas.services.SaleService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +28,12 @@ public class SaleController {
         return ResponseEntity.ok(list);
 
     }
-    
-  
+    @GetMapping(value = "/sum_by_seller")
+    public ResponseEntity<List<SaleSumDTO>> amoutGroupedBySaller() {
+        List<SaleSumDTO> list = service.amoutGroupedBySaller();
+        return ResponseEntity.ok(list);
+
+    }
     
     
 }
